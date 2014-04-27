@@ -1,8 +1,8 @@
 library(ggplot2)
-#library(scales)
 library(ggthemes)
 data <- read.csv("Hg.emissions.csv")
 
+#Shorten a few of the names in the Sector factor
 data$Sector <- as.character(data$Sector)
 data$Sector[data$Sector ==
               "Non-ferrous Metals Production"] <- "Non-ferrous Metals"
@@ -24,12 +24,9 @@ p1 <- ggplot(top8, aes(y = Emission.Est..kg.,
        geom_bar(stat = "identity", fill = "Steelblue4")+ 
        coord_flip()+
   theme_wsj()+
-       #theme(axis.title.y = element_blank())+
-       #labs(y = "Estimated Emissions (kg Hg)")+
-       #scale_y_continuous(labels = comma)+
-  theme(axis.title = element_text(colour="black"))+
-  theme(title=element_text(family="sans", face = "italic", size=rel(1), vjust = 0))+
-  theme(axis.title.y=element_blank())+
+       theme(axis.title = element_text(colour="black"))+
+       theme(title=element_text(family="sans", face = "italic", size=rel(1), vjust = 0))+
+       theme(axis.title.y = element_blank())+
        theme(axis.text.y = element_text(colour = "black", hjust = 1),
              axis.text.x = element_text(colour = "black"))+
        theme(panel.grid.major.y = element_blank(),
